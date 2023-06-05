@@ -1,5 +1,4 @@
 const http = require('https');
-const nodeUrl = require('url');
 
 const doRequest = (url, headers) => {
   return new Promise((resolve, reject) => {

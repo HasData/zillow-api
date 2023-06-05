@@ -4,7 +4,7 @@ const { doRequest } = require('./utils/http');
 class ZillowAPI {
   /**
     *
-    * @param {apiKey} apiKey - Scrapeit Cloud API Key
+    * @param {apiKey} apiKey - Scrape-It.Cloud API Key
     * @throws {Error}
     *
     */
@@ -18,14 +18,28 @@ class ZillowAPI {
 
   /**
     *
-    * @param {params} params - Scrapeit Cloud API Params
+    * @param {params} params - Scrape-It.Cloud Zillow API Params
     * @throws {Error}
-    * @returns {object} Scrapeit Cloud API Response
+    * @returns {object} Scrape-It.Cloud Zillow API Response
     *
     */
   async search(params) {
+    const searchParams = new URLSearchParams()
+
+    Object.entries(params).forEach(([key, value]) => {
+      if (Array.isArray(value)) {
+        value.forEach(value => searchParams.append(key, value.toString()))
+      } else if (typeof value === 'object') {
+        Object.keys(value).forEach(objKey => {
+          searchParams.append(`${key}[${objKey}]`, value[objKey])
+        })
+      } else {
+        searchParams.append(key, value.toString())
+      }
+    });
+
     const responseBody = await doRequest(
-      `${ZILLOW_LISTING_API}?${new URLSearchParams(params).toString()}`,
+      `${ZILLOW_LISTING_API}?${searchParams.toString()}`,
       {
         'x-api-key': this.apiKey,
       },
@@ -43,16 +57,23 @@ class ZillowAPI {
       result = responseBody;
     }
 
-    if (result.status === 'ok') {
-      return result.scrapingResult;
+    if (result.errors && result.errors.length) {
+      const error = new Error(`Validation error`)
+      error.validationErrors = result.errors
+
+      throw error
     }
 
-    if (result.error) {
-      throw new Error(result.error);
+    if (!result.requestMetadata) {
+      throw new Error('Invalid response');
     }
 
-    if (result.status === 'error') {
-      throw new Error(`${result.message}: ${JSON.stringify(result.errors || {})}`);
+    if (result.requestMetadata.status === 'ok') {
+      return result;
+    }
+
+    if (result.requestMetadata.status === 'error') {
+      throw new Error('Invalid response');
     }
 
     return result;
@@ -60,9 +81,9 @@ class ZillowAPI {
 
   /**
     *
-    * @param {params} params - Scrapeit Cloud API Params
+    * @param {params} params - Scrape-It.Cloud Zillow API Params
     * @throws {Error}
-    * @returns {object} Scrapeit Cloud API Response
+    * @returns {object} Scrape-It.Cloud Zillow API Response
     *
     */
   async property(params) {
