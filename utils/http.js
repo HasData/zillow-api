@@ -3,13 +3,16 @@ const http = require('https');
 const doRequest = (url, headers) => {
   return new Promise((resolve, reject) => {
     const req = http.get(url, { headers }, (res) => {
-      let data = '';
+      const result = {
+        responseBody: '',
+        statusCode: res.statusCode,
+      }
 
       res.on('data', (chunk) => {
-        data += chunk;
+        result.responseBody += chunk;
       });
 
-      res.on('end', () => resolve(data));
+      res.on('end', () => resolve(result));
 
       res.on('error', (err) => reject(err.message));
     });

@@ -16,6 +16,39 @@ class ZillowAPI {
     this.apiKey = apiKey;
   }
 
+  handleErrors(result, statusCode) {
+    if (result.status === 'error' && result.message) {
+      throw new Error(result.message)
+    }
+
+    if (statusCode === 403) {
+      throw new Error('You don\'t have enough API credits to perform this request');
+    }
+
+    if (statusCode === 401) {
+      throw new Error('Invalid API Key');
+    }
+
+    if (statusCode === 429) {
+      throw new Error('You reached concurrency limit');
+    }
+
+    if (result.errors && result.errors.length) {
+      const error = new Error(`Validation error`)
+      error.validationErrors = result.errors
+
+      throw error
+    }
+
+    if (!result.requestMetadata) {
+      throw new Error('Invalid response');
+    }
+
+    if (result.requestMetadata.status === 'error') {
+      throw new Error('Invalid response');
+    }
+  }
+
   /**
     *
     * @param {params} params - Scrape-It.Cloud Zillow API Params
@@ -38,7 +71,7 @@ class ZillowAPI {
       }
     });
 
-    const responseBody = await doRequest(
+    const { responseBody, statusCode } = await doRequest(
       `${ZILLOW_LISTING_API}?${searchParams.toString()}`,
       {
         'x-api-key': this.apiKey,
@@ -57,23 +90,10 @@ class ZillowAPI {
       result = responseBody;
     }
 
-    if (result.errors && result.errors.length) {
-      const error = new Error(`Validation error`)
-      error.validationErrors = result.errors
-
-      throw error
-    }
-
-    if (!result.requestMetadata) {
-      throw new Error('Invalid response');
-    }
+    this.handleErrors(result, statusCode)
 
     if (result.requestMetadata.status === 'ok') {
       return result;
-    }
-
-    if (result.requestMetadata.status === 'error') {
-      throw new Error('Invalid response');
     }
 
     return result;
@@ -87,7 +107,7 @@ class ZillowAPI {
     *
     */
   async property(params) {
-    const responseBody = await doRequest(
+    const { responseBody, statusCode } = await doRequest(
       `${ZILLOW_PROPERTY_API}?${new URLSearchParams(params).toString()}`,
       {
         'x-api-key': this.apiKey,
@@ -106,16 +126,10 @@ class ZillowAPI {
       result = responseBody;
     }
 
-    if (!result.requestMetadata) {
-      throw new Error('Invalid response');
-    }
+    this.handleErrors(result, statusCode)
 
     if (result.requestMetadata.status === 'ok') {
       return result;
-    }
-
-    if (result.requestMetadata.status === 'error') {
-      throw new Error('Invalid response');
     }
 
     return result;
