@@ -1,0 +1,47 @@
+from fpdf import FPDF
+
+# Privacy Policy content
+privacy_policy_text = """
+Privacy Policy
+
+Effective Date: May 15, 2025
+Company: VIVIA CONNECT (NORTH AMERICAN REAL ESTATE PARTNERS II EMPLOYEES PF LP)
+
+At VIVIA CONNECT, your privacy is important to us. This Privacy Policy explains how we collect, use, disclose, and protect your information when you use our website (https://www.viviarentals.com), mobile services, and platform integrations with partners such as Stripe, Zillow, Redfin, and others.
+
+Information We Collect
+- Personal identifiers (e.g. name, email, phone, address)
+- Payment data processed via Stripe
+- Application and rental data
+- Device and usage data
+
+How We Use Your Information
+- To provide rental services and complete transactions
+- To send notifications and confirmations
+- To share with third-party platforms (Zillow, Stripe, etc.) for service delivery
+- To comply with tax, legal, and regulatory obligations
+
+Sharing of Data
+We only share information with partners necessary to operate our platform, including:
+- Payment processors (e.g., Stripe)
+- Listing syndication services (e.g., Zillow, Rent.com)
+- Government and compliance agencies, when legally required
+
+Your Rights
+You may request access to or deletion of your personal data by contacting:
+support@viviarentals.com
+"""
+
+# Create the PDF
+pdf = FPDF()
+pdf.add_page()
+pdf.set_auto_page_break(auto=True, margin=15)
+pdf.set_font("Arial", size=12)
+
+# Add text line-by-line
+for line in privacy_policy_text.strip().split('\n'):
+    pdf.multi_cell(0, 10, line)
+
+# Save the PDF
+pdf_path = "/mnt/data/VIVIA_Privacy_Policy.pdf"
+pdf.output(pdf_path)
