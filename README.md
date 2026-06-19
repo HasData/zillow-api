@@ -10,7 +10,7 @@ Zillow.com is a popular online platform where you can find real estate listings 
 
 2. API integration. With our real estate listing API, you can retrieve public listing data from Zillow.com programmatically. Our NodeJS library makes it easy to access real estate data.
 
-3. [No-Code Scraper](https://scrape-it.cloud/scrapers/zillow). We also offer a No-Code Scraper if you prefer a more user-friendly approach and want to avoid writing code.
+3. [No-Code Scraper](https://hasdata.com/scrapers/zillow). We also offer a No-Code Scraper if you prefer a more user-friendly approach and want to avoid writing code.
 
 So whether you collect data manually, integrate our API, or use our No-Code Scraper, we give you different options to suit your needs. Each option has its own benefits, and you can choose the one that best suits your requirements and technical capabilities.
 
@@ -22,11 +22,11 @@ So whether you collect data manually, integrate our API, or use our No-Code Scra
 
 You'll need an API key to use the API and access its features. The API key is a unique identifier that lets you authenticate and make requests.
 
-To obtain your API key, sign up on Scrape-It.Cloud. Scrape-It.Cloud offers a user-friendly platform that provides access to various APIs. By signing up, you'll receive your API key and some free credits to get you started.
+To obtain your API key, sign up on HasData. HasData offers a user-friendly platform that provides access to various APIs. By signing up, you'll receive your API key and some free credits to get you started.
 
 Follow these steps to get your API key:
 
-1.  Visit [Scrape-It.Cloud](https://scrape-it.cloud/) and navigate to the sign-up page.
+1.  Visit [HasData](https://hasdata.com/) and navigate to the sign-up page.
 
 2.  Create your account by providing the necessary information.
 
@@ -109,7 +109,7 @@ const main = async () => {
 
 main();
 ```
-Please refer to the [API documentation](https://docs.scrape-it.cloud/zillow-api/) for more detailed information about available methods.
+Please refer to the [API documentation](https://docs.hasdata.com/apis/zillow/listing) for more detailed information about available methods.
 
 ## Use cases
 
