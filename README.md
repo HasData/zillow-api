@@ -1,15 +1,18 @@
+# Real Estate Listing API for Zillow
 
-## What is Zillow and How to Scrape It
+> HasData is an independent service and is not affiliated with, endorsed by, or sponsored by Zillow Group, Inc. Zillow is a trademark of its respective owner.
 
-Zillow is a popular online platform where you can find real estate listings to rent, buy and sell properties. For getting data from Zillow, you have several options. Let's break them down:
+## Getting real estate data from Zillow.com
 
-1. Manual Data Collection. This means visiting the Zillow website, searching for the property or information you want, and manually extracting the data.
+Zillow.com is a popular online platform where you can find real estate listings to rent, buy, and sell properties. To get public data from Zillow.com, you have several options. Let's break them down:
 
-2. API integration. With our API, you can retrieve data from Zillow programmatically. Our Zillow NodeJS API library makes it easy for everyone to access Zillow's rich real estate data.
+1. Manual Data Collection. This means visiting Zillow.com, searching for the property or information you want, and manually extracting the data.
 
-3. [No-Code Scraper](https://scrape-it.cloud/scrapers/zillow). We also offer a no-code scraper solution if you prefer a more user-friendly approach and want to avoid writing code or implementing a Zillow API.
+2. API integration. With our real estate listing API, you can retrieve public listing data from Zillow.com programmatically. Our NodeJS library makes it easy to access real estate data.
 
-So, whether you collect data manually, integrate our API, or use our code-less scraper, we give you different options to suit your needs. Each option has its own benefits, and you can choose the one that best suits your requirements and technical capabilities.
+3. [No-Code Scraper](https://hasdata.com/scrapers/zillow). We also offer a No-Code Scraper if you prefer a more user-friendly approach and want to avoid writing code.
+
+So whether you collect data manually, integrate our API, or use our No-Code Scraper, we give you different options to suit your needs. Each option has its own benefits, and you can choose the one that best suits your requirements and technical capabilities.
 
 ## Install
 
@@ -17,13 +20,13 @@ So, whether you collect data manually, integrate our API, or use our code-less s
 
 ## API Key
 
-You'll need an API key to use the Zillow API and access its features. The API key is a unique identifier, allowing you to authenticate and request the Zillow API.
+You'll need an API key to use the API and access its features. The API key is a unique identifier that lets you authenticate and make requests.
 
-To obtain your API key, you can sign up on Scrape-It.Cloud. Scrape-It.Cloud offers a user-friendly platform that provides access to various APIs, including the Zillow API. By signing up, you'll receive your API key and some free credits to get you started.
+To obtain your API key, sign up on HasData. HasData offers a user-friendly platform that provides access to various APIs. By signing up, you'll receive your API key and some free credits to get you started.
 
 Follow these steps to get your API key:
 
-1.  Visit [Scrape-It.Cloud](https://scrape-it.cloud/) and navigate to the sign-up page.
+1.  Visit [HasData](https://hasdata.com/) and navigate to the sign-up page.
 
 2.  Create your account by providing the necessary information.
 
@@ -32,11 +35,11 @@ Follow these steps to get your API key:
 4.  In your account dashboard, you'll find your API key, which you can use to authenticate your requests.
 
 
-Once you have your API key, you can integrate it into our Zillow API library by initializing it with your key.
+Once you have your API key, you can integrate it into the library by initializing it with your key.
 
 ## Use
 
-To get started, use this Zillow API example:
+To get started, use this example:
 
 ```js
 const ZillowAPI = require('@scrapeit-cloud/zillow-api');
@@ -45,14 +48,14 @@ const zillowApi = new ZillowAPI('INSERT_YOUR_API_KEY');
 const main = async () => {
   try {
     const properties = await zillowApi.search({
-      keyword:  'new york, ny',
-      type:  'forSale',
+      keyword: 'new york, ny',
+      type: 'forSale',
       price: {
-	    min: 1000000,
-	    max:  2200000,
-	  },
-	  homeTypes: ['house', 'apartment']
-	})
+        min: 1000000,
+        max: 2200000,
+      },
+      homeTypes: ['house', 'apartment']
+    })
 
     console.log(properties)
   } catch(e) {
@@ -65,7 +68,7 @@ const main = async () => {
 
 main();
 ```
-When using the Zillow API, both required and optional parameters are available for retrieving real estate listings. Required parameters:
+When using the API, both required and optional parameters are available for retrieving real estate listings. Required parameters:
 
 -   keyword: The keyword used to search for listings.
 
@@ -92,8 +95,8 @@ const zillowApi = new ZillowAPI('INSERT_YOUR_API_KEY');
 const main = async () => {
   try {
     const property = await zillowApi.property({
-	  url: "https://www.zillow.com/homedetails/57-Cowdry-Hollow-Rd-Berlin-NY-12022/32241485_zpid/"
-	})
+      url: "https://www.zillow.com/homedetails/57-Cowdry-Hollow-Rd-Berlin-NY-12022/32241485_zpid/"
+    })
 
     console.log(property)
   } catch(e) {
@@ -106,22 +109,22 @@ const main = async () => {
 
 main();
 ```
-Please refer to the [API documentation](https://docs.scrape-it.cloud/zillow-api/) for more detailed information about available methods.
+Please refer to the [API documentation](https://docs.hasdata.com/apis/zillow/listing) for more detailed information about available methods.
 
-## Zillow API use cases
+## Use cases
 
-The Zillow API can be important for a variety of purposes. For example, Zillow provides a reliable platform to explore potential opportunities if you are considering investing in real estate. However, collecting and comparing data becomes critical to effectively compare different options at different times and make informed decisions. This is where the Zillow API can come in handy.
+Our real estate listing API can be useful for a variety of purposes. For example, Zillow.com provides a reliable platform to explore potential opportunities if you are considering investing in real estate. Collecting and comparing data becomes critical to effectively compare different options at different times and make informed decisions. This is where the API can come in handy.
 
-You can access real estate data using the API to view real estate information and collect important statistics. This lets you stay on top of price trends and perform market analysis. With the Zillow API, you can easily monitor real estate and make informed choices based on comprehensive information.
+You can access public real estate data using the API to view listing information and collect important statistics. This lets you stay on top of price trends and perform market analysis.
 
-## Zillow API for real estate scraping
+## Real estate data extraction
 
-The Zillow API use JavaScript to gather and provide information. This NPM package will be a great asset for those looking to create their own scraper or simply retrieve data from Zillow.
+This library uses JavaScript to gather and provide public listing data. The NPM package is a great asset for those looking to build their own tool or simply retrieve data from Zillow.com.
 
-If you build a Zillow scraper from scratch, you must use proxies to avoid being blocked, handle JavaScript rendering, and incorporate a captcha-solving service.
+If you build a Zillow.com scraper from scratch, you have to manage proxies, JavaScript rendering, and request reliability yourself.
 
-However, you don't have to worry about these issues when using the Zillow API. These challenges are handled on the API side, and you will be provided with ready-to-use information.
+With our API, you don't have to manage any of that. These concerns are handled on the API side, and you're provided with ready-to-use data.
 
-## Proxy or Zillow API
+## Build it yourself or use our API
 
-As mentioned earlier, you can use proxies and captcha-solving services or the Zillow API to get data from Zillow. In the first case, along with solving the challenges related to proxy usage, you would need to analyze the website structure and extract the data yourself. However, if you use our Zillow API for scraping, you will receive ready-to-use data.
+As mentioned earlier, you can manage proxies and rendering yourself, or use our real estate listing API to get public data from Zillow.com. In the first case, you would also need to analyze the website structure and extract the data yourself. If you use our API, you will receive ready-to-use data.
