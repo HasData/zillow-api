@@ -1,3 +1,6 @@
+# Real Estate Listing API for Zillow
+
+_HasData is an independent service, not affiliated with, endorsed by, or sponsored by Zillow Group, Inc. Zillow is a trademark of its respective owner._
 
 ## What is Zillow and How to Scrape It
 
