@@ -1,4 +1,4 @@
-# Real Estate Listing API for Zillow
+# Zillow API
 
 > HasData is an independent service and is not affiliated with, endorsed by, or sponsored by Zillow Group, Inc. Zillow is a trademark of its respective owner.
 
@@ -8,7 +8,7 @@ Zillow.com is a popular online platform where you can find real estate listings 
 
 1. Manual Data Collection. This means visiting Zillow.com, searching for the property or information you want, and manually extracting the data.
 
-2. API integration. With our real estate listing API, you can retrieve public listing data from Zillow.com programmatically. Our NodeJS library makes it easy to access real estate data.
+2. API integration. With our Zillow API, you can retrieve public listing data from Zillow.com programmatically. Our NodeJS library makes it easy to access real estate data.
 
 3. [No-Code Scraper](https://hasdata.com/scrapers/zillow). We also offer a No-Code Scraper if you prefer a more user-friendly approach and want to avoid writing code.
 
@@ -113,7 +113,7 @@ Please refer to the [API documentation](https://docs.hasdata.com/apis/zillow/lis
 
 ## Use cases
 
-Our real estate listing API can be useful for a variety of purposes. For example, Zillow.com provides a reliable platform to explore potential opportunities if you are considering investing in real estate. Collecting and comparing data becomes critical to effectively compare different options at different times and make informed decisions. This is where the API can come in handy.
+Our Zillow API can be useful for a variety of purposes. For example, Zillow.com provides a reliable platform to explore potential opportunities if you are considering investing in real estate. Collecting and comparing data becomes critical to effectively compare different options at different times and make informed decisions. This is where the API can come in handy.
 
 You can access public real estate data using the API to view listing information and collect important statistics. This lets you stay on top of price trends and perform market analysis.
 
@@ -127,4 +127,4 @@ With our API, you don't have to manage any of that. These concerns are handled o
 
 ## Build it yourself or use our API
 
-As mentioned earlier, you can manage proxies and rendering yourself, or use our real estate listing API to get public data from Zillow.com. In the first case, you would also need to analyze the website structure and extract the data yourself. If you use our API, you will receive ready-to-use data.
+As mentioned earlier, you can manage proxies and rendering yourself, or use our Zillow API to get public data from Zillow.com. In the first case, you would also need to analyze the website structure and extract the data yourself. If you use our API, you will receive ready-to-use data.
